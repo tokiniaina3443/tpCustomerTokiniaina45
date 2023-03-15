@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 
 /**
  *
- * @author Christian
+ * @author Tokiniaina
  */
 @Entity
 @Table(name = "discount")
