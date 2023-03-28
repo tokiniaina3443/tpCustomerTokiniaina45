@@ -17,33 +17,40 @@ import mg.tokiniaina.tpcustomer.entities.Customer;
  */
 @Stateless
 public class CustomerManager {
-    
+
     @PersistenceContext(unitName = "customerPU")
     private EntityManager em;
-    
+
     /**
      * create new customer
-     * @param customer 
+     *
+     * @param customer
      */
     public void persist(Customer customer) {
-      em.persist(customer);
+        em.persist(customer);
     }
-    
+
     /**
      * get all customer
-     * @return 
+     *
+     * @return
      */
-    public List<Customer> getAllCustomers() {  
-      Query query = em.createNamedQuery("Customer.findAll");
-       return query.getResultList();
-    }  
-    
+    public List<Customer> getAllCustomers() {
+        Query query = em.createNamedQuery("Customer.findAll");
+        return query.getResultList();
+    }
+
     /**
      * update customer
+     *
      * @param customer
-     * @return 
+     * @return
      */
     public Customer update(Customer customer) {
-      return em.merge(customer);
-    }  
+        return em.merge(customer);
+    }
+
+    public Customer findById(int idCustomer) {
+        return em.find(Customer.class, idCustomer);
+    }
 }
